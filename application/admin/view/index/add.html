@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="style/font-awesome.css" rel="stylesheet">
+    <link href="style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="style/demo.css" rel="stylesheet">
+    <link href="style/typicons.css" rel="stylesheet">
+    <link href="style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+        {include file="common/header"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+           {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="#">配置管理</a>
+                    </li>
+                                        <li class="active">添加配置项</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">新增用户</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post">
+                        <div class="form-group">
+                            <label for="cname" class="col-sm-2 control-label no-padding-right">中文名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="username" placeholder="" name="cname" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="ename" class="col-sm-2 control-label no-padding-right">英文名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="username" placeholder="" name="ename" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="value" class="col-sm-2 control-label no-padding-right"></label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="username" placeholder="" name="value" required="" type="hidden">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="values" class="col-sm-2 control-label no-padding-right">选项值</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="username" placeholder="" name="values" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="c_type" class="col-sm-2 control-label no-padding-right">所属项目</label>
+                            <div class="col-sm-6">
+                                <select name="c_type" style="width: 100%;">
+                                    <option selected="selected" value="0">一级菜单</option>
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                         <div class="form-group">
+                            <label for="d_type" class="col-sm-2 control-label no-padding-right">数据类型</label>
+                            <div class="col-sm-6">
+                                <select name="d_type" style="width: 100%;">
+                                    <option selected="selected" value="0">一级菜单</option>
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="style/jquery_002.js"></script>
+    <script src="style/bootstrap.js"></script>
+    <script src="style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="style/beyond.js"></script>
+    
+
+
+</body></html>
