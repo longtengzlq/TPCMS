@@ -7,7 +7,9 @@
  */
 
 namespace app\admin\controller;
+use think\Loader;
 use think\Controller;
+use app\admin\validate\Conf as ConfV;
 use think\Request;
 
 /**
@@ -22,11 +24,20 @@ class Conf extends Base{
    
     public function  add(){
         if(request()->isPost()){
-            if(db('conf')->insert(input())){
-                $this->success('插入成功','conf/lst');
-            }else{
-                $this->error('插入失败', 'conf/lst');
-            }
+            $data =input();
+            $validate = new ConfV();
+            if ($validate->scene('add')->check($data)) {
+                //验证通过则插入
+//                if (db('conf')->insert(input())) {
+//                    $this->success('插入成功', 'conf/lst');
+//                } else {
+//                    $this->error('插入失败', 'conf/lst');
+//                }
+            } else{
+                $this->error(dump($validate->getError()),'Conf/lst');
+            };
+          
+       
         }
         return $this->fetch();
     }
