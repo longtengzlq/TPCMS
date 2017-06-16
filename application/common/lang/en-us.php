@@ -6,6 +6,6 @@
  * and open the template in the editor.
  */
 return [
-'hello' => 'welcome to  Thinkphp',
+'hello' => 'Thinkphp',
 'data' => 'data type error',
 ];
