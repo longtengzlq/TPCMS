@@ -20,14 +20,30 @@
             <div class="navbar-header pull-right">
                 <div class="navbar-account">
                     <ul class="account-area">
-                        <li>
-                             <a  href="?lang=en-us" >
-                                English
+                         <li>
+                            <a class="login-area dropdown-toggle text-center" data-toggle="dropdown" style="width:100px;">
+                              
+                                <section>
+                                    <h2><span class="profile"><span id="lang_type">{$lang_name}</span></span></h2>
+                                </section>
                             </a>
-                            <a href="?lang=zh-cn">
-                                中文简体
-                            </a>
+                            <!--Login Area Dropdown-->
+                            <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                <li class="username"><a>David Stevenson</a></li>
+                                <li class="dropdown-footer text-center">
+                                    <a  href="?lang=en-us" onclick="change_lang(this)" class="dropdown-footer " >
+                                        English
+                                    </a>
+                                </li>
+                                <li class="dropdown-footer text-center">
+                                     <a href="?lang=zh-cn" onclick="change_lang(this)" class="dropdown-footer ">
+                                        中文简体
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--/Login Area Dropdown-->
                         </li>
+                      
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
@@ -64,5 +80,10 @@
         </div>
     </div>
 </div>
-
+<script>
+//    function change_lang(obj){
+//        $('#lang_type').innerHTML='obj.innerHTML';
+//        alert(obj.innerHTML);
+//    }
+</script>
 <!-- /头部 -->
