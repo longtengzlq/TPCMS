@@ -21,5 +21,13 @@ return [
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
+    'data_type'=>[
+      '1'=>'text',  
+      '2'=>'单选型',  
+      '3'=>'多选型',  
+      '4'=>'文件',  
+      '5'=>'下拉菜单',  
+      '6'=>'文本域',  
+    ],
 
 ];

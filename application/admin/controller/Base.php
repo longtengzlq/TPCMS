@@ -8,6 +8,7 @@
 
 namespace app\admin\controller;
 use think\Request;
+use think\Config;
 use think\Log;
 /**
  * Description of Base
@@ -21,7 +22,11 @@ class Base extends \think\Controller {
         parent::_initialize();
         $request= Request::instance();
         $cont= $request->controller();
-        $this->assign('cont',$cont);
+        $data_type= Config::get('data_type');
+        $this->assign([
+           'cont'=>$cont,
+            'data_type'=>$data_type,
+        ]);
         Log::write('测试日志信息，这是警告级别，并且实时写入','notice');
     }
 }

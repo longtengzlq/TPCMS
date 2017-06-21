@@ -37,12 +37,10 @@
                     <div class="page-breadcrumbs">
                         <ul class="breadcrumb">
                             <li>
-                                <a href="#">系统</a>
+                                <a href="#">{$Think.lang.system}</a>
                             </li>
-                            <li>
-                                <a href="#">用户管理</a>
-                            </li>
-                            <li class="active">添加用户</li>
+                            
+                            <li class="active">{$Think.lang.configs_add}</li>
                         </ul>
                     </div>
                     <!-- /Page Breadcrumb -->
@@ -54,58 +52,63 @@
                             <div class="col-lg-12 col-sm-12 col-xs-12">
                                 <div class="widget">
                                     <div class="widget-header bordered-bottom bordered-blue">
-                                        <span class="widget-caption">新增用户</span>
+                                        <span class="widget-caption">{$Think.lang.configs_add}</span>
                                     </div>
                                     <form class="form-horizontal" role="form" action="" method="post">
                                         <div class="widget-body">
                                             <div id="horizontal-form">
 
                                                 <div class="form-group">
-                                                    <label for="cname" class="col-sm-2 control-label no-padding-right">中文名称</label>
+                                                    <label for="ch_name" class="col-sm-2 control-label no-padding-right">{$Think.lang.ch_name}</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control" id="username" placeholder="" name="cname" value="" type="text">
+                                                        <input class="form-control" id="ch_name" placeholder="" name="ch_name" value="" type="text">
                                                     </div>
-                                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="ename" class="col-sm-2 control-label no-padding-right">英文名称</label>
+                                                    <label for="en_name" class="col-sm-2 control-label no-padding-right">{$Think.lang.en_name}</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control" id="username" placeholder="" name="ename" required="" type="text">
+                                                        <input class="form-control" id="en_name" placeholder="" name="en_name" required="" type="text">
                                                     </div>
-                                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                 </div>
-
                                                 <div class="form-group">
-                                                    <label for="values" class="col-sm-2 control-label no-padding-right">选项值</label>
+                                                    <label for="value" class="col-sm-2 control-label no-padding-right">{$Think.lang.value}</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control" id="username" placeholder="" name="values"  type="text">
+                                                        <textarea class="form-control" id="value" placeholder="" name="df_value"></textarea>
                                                     </div>
                                                     
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="c_type" class="col-sm-2 control-label no-padding-right">所属项目</label>
+                                                <div class="form-group" id="values">
+                                                    <label for="values" class="col-sm-2 control-label no-padding-right">{$Think.lang.values}</label>
                                                     <div class="col-sm-6">
-                                                        <select name="c_type" style="width: 100%;">
-                                                            <option selected="selected" value="1">基本信息</option>
-                                                            <option  value="2">SEO设置</option>
-                                                            <option  value="3">附件设置</option>
-                                                        </select>
+                                                        <input class="form-control"  placeholder="" name="values"  type="text">
                                                     </div>
-                                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                                    <p class="help-block col-sm-4 black">{$Think.lang.value_tip}</p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="d_type" class="col-sm-2 control-label no-padding-right">数据类型</label>
+                                                    <label for="c_type" class="col-sm-2 control-label no-padding-right">{$Think.lang.cate}</label>
                                                     <div class="col-sm-6">
-                                                        <select name="d_type" style="width: 100%;">
-                                                            <option selected="selected" value="1">文本框</option>
-                                                            <option  value="2">单选项</option>
-                                                            <option  value="3">多选项</option>
-                                                            <option  value="4">文件</option>
-                                                            <option  value="5">下拉框</option>
-                                                            <option  value="6">文本域</option>   
+                                                        <select name="c_type" style="width: 100%;">
+                                                            <option selected="selected" value="1">{$Think.lang.basic_info}</option>
+                                                            <option  value="2">{$Think.lang.SEO_info}</option>
+                                                            <option  value="3">{$Think.lang.attchment_info}</option>
                                                         </select>
                                                     </div>
-                                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="d_type" class="col-sm-2 control-label no-padding-right">{$Think.lang.data_type}</label>
+                                                    <div class="col-sm-6">
+                                                        <select name="d_type" id="d_type" style="width: 100%;" onchange="check_value(this)">
+                                                            {volist name='data_type' id="data"}
+                                                               
+                                                            <option value="{$key}">  {php} echo $Think.lang.checkbox;{/php}  {$Think.lang.text}</option>
+                                                            {/volist}
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                 </div>
 
                                                 <div class="form-group">
@@ -143,6 +146,17 @@
         <script src="__JS__/jquery.js"></script>
         <!--Beyond Scripts-->
         <script src="__JS__/beyond.js"></script>
+        <script type="text/javascript">
+            ($('#values').hide())();
+            function check_value(obj){
+               
+               if(obj.value==2||obj.value==3){
+                   $('#values').show();
+                }else{
+                      $('#values').hide();
+                } 
+            }
+        </script>
 
 
 

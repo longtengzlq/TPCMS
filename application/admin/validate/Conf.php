@@ -16,8 +16,8 @@ use think\Validate;
 class Conf extends Validate {
     //put your code here
     protected $rule=[
-        'cname'=> 'require|max:60',
-        'ename'=> 'require|max:60',
+        'ch_name'=> 'require|max:60',
+        'en_name'=> 'require|max:60',
         'c_type'=> 'require|number|between:1,3',
         'd_type'=> 'require|number|between:1,6',
         'value'=> 'require',
@@ -26,10 +26,10 @@ class Conf extends Validate {
         
     ];
     protected $message = [
-        'cname.require' => '中文名称必须填写',
-        'cname.max' => '名称最多不能超过60个字符',
-        'ename.require' => '英文名称必须',
-        'ename.max' => '英文名称最多不能超过60个字符',
+        'ch_name.require' => '中文名称必须填写',
+        'ch_name.max' => '名称最多不能超过60个字符',
+        'en_name.require' => '英文名称必须',
+        'en_name.max' => '英文名称最多不能超过60个字符',
         'c_type.number' => '所属栏目必须是数字',
         'c_type.require' => '所属栏目只必填',
         'c_type.between' => '所属栏目只能在1-3之间',
@@ -41,8 +41,8 @@ class Conf extends Validate {
         
     ];
     protected $scene = [
-        'add' => ['cname', 'ename','c_type','d_type'],
-        'edit' => ['cname', 'ename','c_type','d_type','id','value'],
+        'add' => ['ch_name', 'en_name','c_type','d_type'],
+        'edit' => ['ch_name', 'en_name','c_type','d_type','id','value'],
     ];
 
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html><head>
         <meta charset="utf-8">
         <title>ThinkPHP5.0</title>
@@ -17,6 +17,7 @@
         <link href="__CSS__/demo.css" rel="stylesheet">
         <link href="__CSS__/typicons.css" rel="stylesheet">
         <link href="__CSS__/animate.css" rel="stylesheet">
+        <link href="__CSS__/admin.css" rel="stylesheet">
 
     </head>
     <body>
@@ -24,173 +25,188 @@
         {include file="common/header"}
 
         <!-- /头部 -->
-
-        <div class="main-container container-fluid">
-            <div class="page-container">
-                <!-- Page Sidebar -->
-                {include file="common/left"}
-                <!-- /Page Sidebar -->
-                <!-- Page Content -->
-                <div class="page-content">
-                    <!-- Page Breadcrumb -->
-                    <div class="page-breadcrumbs">
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">系统</a>
-                            </li>
-                            <li class="active">配置管理</li>
-                        </ul>
-                    </div>
-                    <!-- /Page Breadcrumb -->
-
-                    <!-- Page Body -->
-                    <div class="page-body">
-
-                        <button type="button" tooltip="添加配置项" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url(\'conf/add\')}'"> <i class="fa fa-plus"></i> Add
-                        </button>
-                        <div class="row">
-                            <div class="col-lg-12 col-sm-12 col-xs-12">
-
-                                <div class="widget">
-                                    <form class="form-horizontal" role="form" action="" method="post">
-                                        <div class="widget-body">
-
-                                            <div class="widget-main ">
-                                                <div class="tabbable">
-                                                    <ul class="nav nav-tabs tabs-flat" id="myTab11">
-                                                        <li class="active">
-                                                            <a data-toggle="tab" href="#baseinfo">
-                                                                基本信息
-                                                            </a>
-                                                        </li>
-                                                        <li class="">
-                                                            <a data-toggle="tab" href="#seoinfo">
-                                                                SEO设置
-                                                            </a>
-                                                        </li>
-                                                        <li class="">
-                                                            <a data-toggle="tab" href="#attachment">
-                                                                SEO设置
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    {volist name="confs" id="conf"}
-                                                    <div class="tab-content tabs-flat">
-                                                        <div id="baseinfo" class="tab-pane active">
-                                                            {if condition="$conf.c_type eq 1"}
-                                                            <p>
-                                                                {if condition="$conf.d_type eq '1'"}
-                                                                {$conf.cname} <input type="text" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '2'"}
-                                                                {$conf.cname} <input type="raido" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '3'"}
-                                                                {$conf.cname} <input type="checkbox" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '4'"}
-                                                                {$conf.cname} <input type="file" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '5'"}
-                                                                {$conf.cname} <select>asdfds</select>
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '6'"}
-                                                                {$conf.cname} <input type="textarea" name="{$conf.ename}">AA
-                                                                {/if}
-                                                            </p>
-                                                            {/if}
-                                                        </div>
-
-                                                        <div id="seoinfo" class="tab-pane">
-                                                            {if condition="$conf.c_type eq 2"}
-                                                            <p>         
-                                                                {if condition="$conf.d_type eq '1'"}
-                                                                {$conf.cname} <input type="text" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '2'"}
-                                                                {$conf.cname} <input type="raido" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '3'"}
-                                                                {$conf.cname} <input type="checkbox" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '4'"}
-                                                                {$conf.cname} <input type="file" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '5'"}
-                                                                {$conf.cname} <select>asdfds</select>
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '6'"}
-                                                                {$conf.cname} <input type="textarea" name="{$conf.ename}">AA
-                                                                {/if}
-                                                            </p>
-                                                            {/if}
-                                                        </div>
-                                                        <div id="attachment" class="tab-pane">
-                                                            {if condition="$conf.c_type eq 3"}
-                                                            <p>         
-                                                                {if condition="$conf.d_type eq '1'"}
-                                                                {$conf.cname} <input type="text" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '2'"}
-                                                                {$conf.cname} <input type="raido" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '3'"}
-                                                                {$conf.cname} <input type="checkbox" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '4'"}
-                                                                {$conf.cname} <input type="file" name="{$conf.ename}">AA
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '5'"}
-                                                                {$conf.cname} <select>asdfds</select>
-                                                                {/if}
-                                                                {if condition="$conf.d_type eq '6'"}
-                                                                {$conf.cname} <input type="textarea" name="{$conf.ename}">AA
-                                                                {/if}
-                                                            </p>
-                                                            {/if}
-                                                        </div>
-                                                    </div>
-                                                    {/volist}
-                                                    <div class="form-group">
-                                                        <div class="col-sm-offset-2 col-sm-10">
-                                                            <button type="submit" class="btn btn-sky">{$Think.lang.save_info}</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="value" class="col-sm-2 control-label no-padding-right"></label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control" id="username" placeholder="" name="value" value="" required="" type="hidden">
-                                            </div>
-
-                                        </div>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                    <!-- /Page Body -->
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+           {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">{$Think.lang.system}</a>
+                    </li>
+                                        <li class="active">{$Think.lang.article_list}</li>
+                                        </ul>
                 </div>
-                <!-- /Page Content -->
-            </div>	
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="{$Think.lang.add}" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('article/add')}'"> <i class="fa fa-plus"></i> {$Think.lang.add}
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <form id="myform" action=""  method="post">
+                            
+                    <table class="table table-bordered table-hover ">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" style="vertical-align: middle;;font-size: 13px">
+                                    <label >
+                                            <input type="checkbox" class="colored-success"   id='check_all'>
+                                            <span id="check-2" class="text"></span>
+                                         </label>
+
+                                </th>
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.id}</th>
+                                <th class="text-center" style="vertical-align: middle"><a href="" style='color:inherit'>{$Think.lang.sort}</a></th>                                
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.ch_name}</th>
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.en_name}</th>
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.cate}</th>
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.data_type}</th>                               
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.status}</th>                               
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.operation}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {volist name="results" id="vo"}
+                            <tr>
+                                <td align="center" style='vertical-align: middle;'>
+                                         <label>
+                                             <input type="checkbox" name="checkbox[]" data-tog="ss"  id='{$vo.id}' value="{$vo.id}" class="colored-success" >
+                                            <span class="text" ></span>
+                                         </label>
+                                </td>
+                                <td align="center" style='vertical-align: middle;;font-size: 13px'>{$vo.id}</td>
+                                <td align="center"  class="" style='vertical-align: middle;font-size: 13px;width: 80px'>
+                                    <input type="text" class="form-control col-sm-2 text-center" name='sort[{$vo.id}]'  value=" {$vo.sort}"  placeholder="Default Input">
+                                  </td>
+                                
+                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.ch_name}</td>
+                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.en_name} </td>
+                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.c_type} </td>
+                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.d_type}</td>
+                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>
+                                    <label>
+                                        <input class="checkbox-slider colored-success " style="left: inherit"  onclick="set_status({$vo.id},this)"  id='status_{$vo.id}' data-tog='sdfaf'  name='status' {if condition="$vo.status == 1"}checked="checked"{/if}type="checkbox">
+                                        <span class="text" style="margin-bottom: -13px"></span>
+                                    </label>
+                                 </td>
+                              
+                                                         
+                                <td align="center" class="buttons-preview"  style='vertical-align: middle;font-size: 13px'>
+                                    <a href="{:url('article/edit',array('id'=>$vo['id']))}" class="btn btn-azure btn-m " style="margin-bottom: -1px;">
+                                        <i class="fa fa-edit"></i> {$Think.lang.edit}
+                                    </a>
+                            
+                                    <a href="{:url('Conf/del',array('id'=>$vo['id']))}" onClick="warning('{$Think.lang.delete_confirm}') " class="btn btn-darkorange  btn-m" style="margin-bottom: -1px;">
+                                        <i class="fa fa-trash-o"></i> {$Think.lang.delete}
+                                    </a>
+                                </td>
+                            </tr>
+                             {/volist}   
+                        </tbody>
+                  
+                    </table>
+                       
+                    </form>
+                </div>
+                <div  style="display: block">
+                    <div style="padding-top: 5px; display: inline-block ;">                           
+                        <!--      
+                        <a  onclick='(function(){$("form").attr("action","{:url(\"delMuti\",array(\"language_id\"=>\"1\"))}");;$("#myform").submit();})();' class="btn btn-darkorange">删除</a>
+                        -->
+                        <a  onclick='del_arr()' class="btn btn-darkorange">{$Think.lang.delete}</a>
+                        <a onclick="sort_arr()" class="btn btn-azure">{$Think.lang.sort}</a>
+                             
+                    </div>
+                    <div style="padding-top: 5px;display: inline-block ; float: right; ">
+                       
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
 
-        <!--Basic Scripts-->
-        <script src="__JS__/jquery_002.js"></script>
-        <script src="__JS__/bootstrap.js"></script>
-        <script src="__JS__/jquery.js"></script>
-        <!--Beyond Scripts-->
-        <script src="__JS__/beyond.js"></script>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__JS__/jquery_002.js"></script>
+    <script src="__JS__/bootstrap.js"></script>
+    <script src="__JS__/jquery.js"></script>
+    
+    <!--Beyond Scripts-->
+    <script src="__JS__/beyond.js"></script>
+    <script src="__JS__/mlcms.js"></script>
+    <script>
+        
+        /* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 
+ $("#check_all").click(function(){           
+         $(":input:checkbox[data-tog='ss']").prop('checked',this.checked);             
+        });
+       
+        function del_arr(){
+            if($(":input:checkbox:checked[data-tog='ss']").length>0){               
+                $("form").attr("action","{:url('delMuti')}");
+                $("#myform").submit();
+            }else{
+                alert('{$Think.lang.no_selected_checkbox}');
+            }
+        }
+        function sort_arr(){            
+                $("form").attr("action","{:url('resort')}");
+                $("#myform").submit();
+        }
+        
+         function set_status(id,obj){            
+            var status=false;
+            if($('#'+obj.id).attr('checked')=='checked'){
+                status=true;
+            }          
+            if(status){
+                $('#'+obj.id).removeAttr('checked');               
+               set_remote_status(id,obj.name,0);
+            }else{
+                $('#'+obj.id).attr('checked','checked');
+                set_remote_status(id,obj.name,1);
+            }
+            
+        }
+        function set_remote_status(id,field_name,field_value){     
+           
+            $.ajax({
+              url:"{:url('updateStatus')}",
+                data:{'id':id,'field_name':field_name,'field_value':field_value},
+                success:function(msg){
+                },
+                error:function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown)
+                },
+            });
+            
+        }
+      
+    </script>
 
-    </body></html>
+
+</body></html>
