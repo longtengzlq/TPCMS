@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-6-17, 20:21:05
+    Author     : ZLQ
+*/
+
+.navbar .navbar-inner .navbar-header .navbar-account .account-area > li .dropdown-menu.dropdown-login-area > li.dropdown-footer {
+    padding: 10px;
+    border-top: 3px solid #2dc3e8;
+    border-bottom: 0;
+    text-align: center;
+}
+.navbar .navbar-inner .navbar-header .navbar-account .account-area>li .dropdown-arrow:before {
+    content: '';
+    display: inline-block;
+    right: 0;
+    position: absolute;
+    width: 50px;
+    background-color: #fff;
+    border: 0;
+    top: -46px;
+    height: 3px;
+    -webkit-box-shadow: 0 2px 40px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 2px 40px rgba(0,0,0,.4);
+    box-shadow: 0 2px 40px rgba(0,0,0,.4);
+}

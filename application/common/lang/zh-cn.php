@@ -6,6 +6,11 @@
  * and open the template in the editor.
  */
 return [
-'hello' => '欢迎使用ThinkPHP',
-'data' => '数据类型错误',
+    //全局定义
+    'hello' => '欢迎使用MLCMS多语言内容管理系统',
+    'home' => '主页',
+    'save_info'=>'保存信息',
+    'data' => '数据类型错误',
+    
+    //具体模块定义
 ];

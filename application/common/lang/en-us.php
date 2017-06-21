@@ -6,6 +6,8 @@
  * and open the template in the editor.
  */
 return [
-'hello' => 'Thinkphp',
-'data' => 'data type error',
+    'hello' => 'Welcome to use this MLCMS content manage system of multi language!  ',
+    'home' => 'Home',
+    'save_info'=>'Save Info',
+    'data' => 'Data Type Error',
 ];
