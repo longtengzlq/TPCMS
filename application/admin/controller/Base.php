@@ -10,6 +10,7 @@ namespace app\admin\controller;
 use think\Request;
 use think\Config;
 use think\Log;
+use think\Lang;
 /**
  * Description of Base
  *
@@ -22,7 +23,11 @@ class Base extends \think\Controller {
         parent::_initialize();
         $request= Request::instance();
         $cont= $request->controller();
-        $data_type= Config::get('data_type');
+        $data_temp= Config::get('data_type');
+        $data_type=array();
+        foreach ($data_temp as $key=>$value){
+            $data_type[$key]= Lang::get($value);
+        }
         $this->assign([
            'cont'=>$cont,
             'data_type'=>$data_type,

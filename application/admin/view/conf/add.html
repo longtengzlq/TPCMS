@@ -103,7 +103,7 @@
                                                         <select name="d_type" id="d_type" style="width: 100%;" onchange="check_value(this)">
                                                             {volist name='data_type' id="data"}
                                                                
-                                                            <option value="{$key}">  {php} echo $Think.lang.checkbox;{/php}  {$Think.lang.text}</option>
+                                                            <option value="{$key}">  {$data}</option>
                                                             {/volist}
                                                             
                                                         </select>

@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 use think\Loader;
 use think\Controller;
+use think\Lang;
 use app\admin\validate\Conf as ConfV;
 use think\Request;
 
@@ -23,6 +24,7 @@ class Conf extends Base{
     }
    
     public function  add(){
+        echo Lang::get('text');
         if(request()->isPost()){
             $data =input();
             $data['value']=$data['df_value'];

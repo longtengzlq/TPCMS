@@ -23,11 +23,11 @@ return [
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'data_type'=>[
       '1'=>'text',  
-      '2'=>'单选型',  
-      '3'=>'多选型',  
-      '4'=>'文件',  
-      '5'=>'下拉菜单',  
-      '6'=>'文本域',  
+      '2'=>'radio',  
+      '3'=>'checkbox',  
+      '4'=>'file',  
+      '5'=>'dropdown',  
+      '6'=>'textarea',  
     ],
 
 ];
