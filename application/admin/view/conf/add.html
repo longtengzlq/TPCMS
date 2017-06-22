@@ -90,9 +90,9 @@
                                                     <label for="c_type" class="col-sm-2 control-label no-padding-right">{$Think.lang.cate}</label>
                                                     <div class="col-sm-6">
                                                         <select name="c_type" style="width: 100%;">
-                                                            <option selected="selected" value="1">{$Think.lang.basic_info}</option>
-                                                            <option  value="2">{$Think.lang.SEO_info}</option>
-                                                            <option  value="3">{$Think.lang.attchment_info}</option>
+                                                            {volist name='c_type' id="data"}                                                               
+                                                            <option value="{$key}">  {$data}</option>
+                                                            {/volist}
                                                         </select>
                                                     </div>
                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
@@ -110,14 +110,17 @@
                                                     </div>
                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                 </div>
-
                                                 <div class="form-group">
-                                                    <label for="value" class="col-sm-2 control-label no-padding-right"></label>
+                                                    <label for="status" class="col-sm-2 control-label no-padding-right" >{$Think.lang.conf_status}</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control" id="username" placeholder="" name="value" value="" required="" type="hidden">
-                                                    </div>
-
+                                                        <label>
+                                                            <input class="checkbox-slider colored-success "  checked="" id='status'  name='status' type="checkbox">
+                                                            <span class="text" style="margin-top:5px"></span>
+                                                        </label>
+                                                    </div>                             
                                                 </div>
+
+                                                
 
 
                                             </div>

@@ -38,7 +38,7 @@
                                         <li>
                         <a href="{:url('index/index')}">{$Think.lang.system}</a>
                     </li>
-                                        <li class="active">{$Think.lang.article_list}</li>
+                                        <li class="active">{$Think.lang.configs_lst}</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -46,7 +46,7 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="{$Think.lang.add}" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('article/add')}'"> <i class="fa fa-plus"></i> {$Think.lang.add}
+<button type="button" tooltip="{$Think.lang.configs_lst}" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('conf/add')}'"> <i class="fa fa-plus"></i> {$Think.lang.configs_add}
 </button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -92,8 +92,8 @@
                                 
                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.ch_name}</td>
                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.en_name} </td>
-                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.c_type} </td>
-                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.d_type}</td>
+                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$c_type[$vo.c_type]} </td>
+                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$data_type[$vo.d_type]}</td>
                                  <td align="center"  style='vertical-align: middle;font-size: 13px'>
                                     <label>
                                         <input class="checkbox-slider colored-success " style="left: inherit"  onclick="set_status({$vo.id},this)"  id='status_{$vo.id}' data-tog='sdfaf'  name='status' {if condition="$vo.status == 1"}checked="checked"{/if}type="checkbox">
@@ -103,7 +103,7 @@
                               
                                                          
                                 <td align="center" class="buttons-preview"  style='vertical-align: middle;font-size: 13px'>
-                                    <a href="{:url('article/edit',array('id'=>$vo['id']))}" class="btn btn-azure btn-m " style="margin-bottom: -1px;">
+                                    <a href="{:url('conf/edit',array('id'=>$vo['id']))}" class="btn btn-azure btn-m " style="margin-bottom: -1px;">
                                         <i class="fa fa-edit"></i> {$Think.lang.edit}
                                     </a>
                             

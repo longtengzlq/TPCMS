@@ -12,6 +12,7 @@ use think\Controller;
 use think\Lang;
 use app\admin\validate\Conf as ConfV;
 use think\Request;
+use think\Db;
 
 /**
  * Description of Index
@@ -24,12 +25,19 @@ class Conf extends Base{
     }
    
     public function  add(){
-        echo Lang::get('text');
         if(request()->isPost()){
             $data =input();
+            $data['status']=0;
+            if(input('status')=='on'){
+                $data['status']=1;
+            }
+            if($data['values']!=''){
+                $data['values']= str_ireplace('，', ',', $data['values']);
+            }
             $data['value']=$data['df_value'];
             $data= del_arr_ele_by_key($data, 'df_value');
-           
+            dump($data);
+            
             $validate = new ConfV();
             if ($validate->scene('add')->check($data)) {
                 //验证通过则插入
@@ -41,8 +49,28 @@ class Conf extends Base{
             } else{
                 $this->error(dump($validate->getError()),'Conf/lst');
             };
-          
-       
+        }
+        return $this->fetch();
+    }
+    public function edit(){
+        $id=input('id');
+        $result=db('conf')->where('id',$id)->find();
+        $this->assign('result',$result);
+        if(request()->isPost()){
+            $data=input();
+             $data['status']=0;
+            if(input('status')=='on'){
+                $data['status']=1;
+            }
+            if($data['values']!=''){
+                $data['values']= str_ireplace('，', ',', $data['values']);
+            }
+            $data= del_arr_ele_by_key($data, 'df_value');
+            if(db('conf')->update($data)!==false){
+                $this->success('更新成功', 'conf/lst');
+            }else{
+                 $this->error('更新失败', 'conf/lst');
+            }
         }
         return $this->fetch();
     }
@@ -62,13 +90,11 @@ class Conf extends Base{
         }    
     } 
      public  function delMuti(){
-         $id_arr= input();
-
-         $language_id= get_language_id();
+         $id_arr= input();        
          $rst=TRUE;
          if(array_key_exists('checkbox',$id_arr)){             
              foreach ($id_arr['checkbox'] as $key => $value) {                 
-                    if(Db::name('article')->delete($value)){
+                    if(Db::name('conf')->delete($value)){
                     } else {
                         $this->error(\think\Lang::get('operate_failure'), 'lst');    
                     };
@@ -103,6 +129,21 @@ class Conf extends Base{
             }
              $this->success(\think\Lang::get('operate_success'), 'lst');    
             
+        }
+    }
+    public function  updateStatus(){
+       $data['id']= input('id');          
+       if(input('field_name')&&(input('field_value')!==false)){
+           $field_name=input('field_name');
+            $field_value=input('field_value');
+            $data[$field_name]=$field_value;
+       }else{
+          echo 'error';
+       }
+        if(db('conf')->update($data)!==false){            
+                echo 'name'.input('field_name').'value'.input('field_value');
+        }else{
+            echo 'error';
         }
     }
 }

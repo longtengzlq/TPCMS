@@ -29,5 +29,11 @@ return [
       '5'=>'dropdown',  
       '6'=>'textarea',  
     ],
+    'c_type'=>[
+      '1'=>'basic_info',  
+      '2'=>'SEO_info',  
+      '3'=>'attchment_info',  
+     
+    ],
 
 ];

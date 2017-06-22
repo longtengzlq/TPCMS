@@ -23,7 +23,7 @@ return [
     'operate_failure' => 'Operate Fail',
     //信息定义
      'delete_confirm' => 'Do you sure to delete this?',
-    
+    'no_selected_checkbox'=>'No Selection seleted',
     //系统配置模块定义
     'configs_add'=>'Add Config',
     'configs_lst'=>'Configs List',
@@ -46,4 +46,5 @@ return [
     'file'=>'FILE',
     'dropdown'=>'DROPDOWN',
     'textarea'=>'TEXTAREA',
+    'conf_status'=>'Enabled',
 ];

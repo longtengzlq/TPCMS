@@ -24,13 +24,19 @@ class Base extends \think\Controller {
         $request= Request::instance();
         $cont= $request->controller();
         $data_temp= Config::get('data_type');
+        $c_temp= Config::get('c_type');
         $data_type=array();
+        $c_type=array();
+         foreach ($c_temp as $key=>$value){
+            $c_type[$key]= Lang::get($value);
+        }
         foreach ($data_temp as $key=>$value){
             $data_type[$key]= Lang::get($value);
         }
         $this->assign([
            'cont'=>$cont,
             'data_type'=>$data_type,
+            'c_type'=>$c_type,
         ]);
         Log::write('测试日志信息，这是警告级别，并且实时写入','notice');
     }
