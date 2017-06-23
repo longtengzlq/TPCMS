@@ -36,8 +36,6 @@ class Conf extends Base{
             }
             $data['value']=$data['df_value'];
             $data= del_arr_ele_by_key($data, 'df_value');
-            dump($data);
-            
             $validate = new ConfV();
             if ($validate->scene('add')->check($data)) {
                 //验证通过则插入
@@ -78,6 +76,51 @@ class Conf extends Base{
         $results=db('conf')->order('sort asc,id asc')->select();
         $this->assign('results',$results);
         return $this->fetch('list');
+    }
+    public function  settingLst(){
+        $results=db('conf')->order('sort asc,id asc')->select();
+        if(request()->isPost()){
+            $data=input();
+            if(array_key_exists('attchment_type', input())){
+                $attchment_type= $_POST['attchment_type'];
+                $data['attchment_type']= implode(',', $attchment_type);
+            }
+            foreach($data as $key=>$value){
+                if(db('conf')->where('en_name',$key)->update(['value'=>$value])!==false){
+                    echo $key;
+                    echo '-yes'."<br/>";
+                }else{
+                    echo $key."<br/>";
+                    echo 'no';
+                }
+            }
+           
+            die;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //用来切换语言名称
+        \think\Cookie::set('lang','en-us');
+        $lang= \think\Cookie::get('lang');
+        if($lang=='en-us'){
+         //   echo '1111';
+        }elseif($lang='zh-cn'){
+         //   echo '222';
+        }
+        //切换结束--en-name不可以有空格
+        $this->assign('confs',$results);
+        return $this->fetch();
     }
      public  function del(){
         $id=input('id');       

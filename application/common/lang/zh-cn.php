@@ -28,6 +28,9 @@ return [
     //message定义
     'delete_confirm'=>'确定要删除该选项吗？',
     'no_selected_checkbox'=>'没有选择任何选项',
+    
+    
+    
     //系统配置模块定义
     'configs_add'=>'添加配置项',
     'configs_lst'=>'配置项列表',
@@ -52,5 +55,7 @@ return [
     'dropdown'=>'下拉菜单',
     'textarea'=>'文本域',
     'conf_status'=>'是否启用',
+    'setting_list'=>'设置列表',
+    'system_set'=>'系统设置',
     
 ];

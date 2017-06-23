@@ -47,4 +47,6 @@ return [
     'dropdown'=>'DROPDOWN',
     'textarea'=>'TEXTAREA',
     'conf_status'=>'Enabled',
+    'setting_list'=>'Setting List',
+    'system_set'=>'System Setting',
 ];

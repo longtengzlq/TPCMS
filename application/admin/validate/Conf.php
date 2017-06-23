@@ -17,7 +17,7 @@ class Conf extends Validate {
     //put your code here
     protected $rule=[
         'ch_name'=> 'require|max:60',
-        'en_name'=> 'require|max:60',
+        'en_name'=> 'require|max:60|unique:conf',
         'c_type'=> 'require|number|between:1,3',
         'd_type'=> 'require|number|between:1,6',
         'value'=> 'require',
@@ -30,6 +30,7 @@ class Conf extends Validate {
         'ch_name.max' => '名称最多不能超过60个字符',
         'en_name.require' => '英文名称必须',
         'en_name.max' => '英文名称最多不能超过60个字符',
+        'en_name.unique' => '英文名称必须唯一',
         'c_type.number' => '所属栏目必须是数字',
         'c_type.require' => '所属栏目只必填',
         'c_type.between' => '所属栏目只能在1-3之间',

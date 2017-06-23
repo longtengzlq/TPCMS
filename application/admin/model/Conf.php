@@ -7,12 +7,12 @@
  */
 
 namespace app\admin\model;
-
+use think\Model;
 /**
  * Description of Conf
  *
  * @author ZLQ
  */
-class Conf {
+class Conf extends Model {
     //put your code here
 }

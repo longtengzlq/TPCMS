@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+        <title>ThinkPHP5.0</title>
+
+        <meta name="description" content="Dashboard">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--Basic Styles-->
+        <link href="__CSS__/bootstrap.css" rel="stylesheet">
+        <link href="__CSS__/font-awesome.css" rel="stylesheet">
+        <link href="__CSS__/weather-icons.css" rel="stylesheet">
+
+        <!--Beyond styles-->
+        <link id="beyond-link" href="__CSS__/beyond.css" rel="stylesheet" type="text/css">
+        <link href="__CSS__/demo.css" rel="stylesheet">
+        <link href="__CSS__/typicons.css" rel="stylesheet">
+        <link href="__CSS__/animate.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <!-- 头部 -->
+        {include file="common/header"}
+
+        <!-- /头部 -->
+
+        <div class="main-container container-fluid">
+            <div class="page-container">
+                <!-- Page Sidebar -->
+                {include file="common/left"}
+                <!-- /Page Sidebar -->
+                <!-- Page Content -->
+                <div class="page-content">
+                    <!-- Page Breadcrumb -->
+                    <div class="page-breadcrumbs">
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">系统</a>
+                            </li>
+                            <li class="active">配置管理</li>
+                        </ul>
+                    </div>
+                    <!-- /Page Breadcrumb -->
+
+                    <!-- Page Body -->
+                    <div class="page-body">
+
+                        <button type="button" tooltip="添加配置项" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url(\'conf/add\')}'"> <i class="fa fa-plus"></i> {$Think.lang.add}
+                        </button>
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+
+                                <div class="widget">
+                                    <form class="form-horizontal" role="form" action="" method="post">
+                                        <div class="widget-body">
+
+                                            <div class="widget-main ">
+                                                <div class="tabbable">
+                                                    <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                                                        <li class="active">
+                                                            <a data-toggle="tab" href="#baseinfo">
+                                                                {$Think.lang.basic_info}
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a data-toggle="tab" href="#seoinfo">
+                                                                {$Think.lang.SEO_info}
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a data-toggle="tab" href="#attachment">
+                                                                {$Think.lang.attchment_info}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+
+                                                    <div class="tab-content tabs-flat">
+                                                        <div id="baseinfo" class="tab-pane active">
+                                                            {volist name="confs" id="conf"}
+                                                                {if condition="$conf.c_type eq 1"}
+                                                                    <p>
+                                                                        {switch name="$conf.d_type" }
+                                                                            {case value="1"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.value}" required="" type="text">
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="2"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+                                                                                        <div class="radio col-sm-4 ">
+                                                                                            <label>
+                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.value eq $key"}checked="checked"{/if} class="colored-success">
+                                                                                                <span class="text ">{$value} </span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <?php }?>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="3"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <?php  $temp=$conf['value'];$tp_arr=explode(',',$temp);?>
+                                                                                        <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+
+                                                                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                                                                <div class="checkbox">
+                                                                                                    <label>
+                                                                                                        <input id="{$conf.en_name}" name="{$conf.en_name}[]" type="checkbox" class="colored-success" value="{$key}" {in name="key" value="$tp_arr"} checked="checked" {/in}   class="colored-success">
+                                                                                                        <span class="text">{$value}</span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        <?php }?>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="4"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" required="" type="file" style="border-color: transparent;-webkit-box-shadow:0px 0px 0px transparent ">
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="5"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-btn">
+                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.value}</a>
+                                                                                                <a class="btn btn-success dropdown-toggle"  data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                                                <ul class="dropdown-menu dropdown-success">
+                                                                                                    <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+                                                                                                    <li>
+                                                                                                        <a href="javascript:$('#{$conf.en_name}').attr('value','{$value}');$('#drop_val').html('{$value}');void(0);">{$value}</a>
+                                                                                                    </li>
+                                                                                                   <?php }?>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                            <input type="text" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.value}"  class="form-control">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="6"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.value} name="{$conf.en_name}"">{$conf.value}</textarea>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {default /}默认情况
+                                                                        {/switch}
+                                                                    </p>
+                                                                {/if}
+                                                            {/volist}
+                                                        </div>
+
+                                                        <div id="seoinfo" class="tab-pane">
+                                                            {volist name="confs" id="conf"}
+                                                                {if condition="$conf.c_type eq 2"}
+                                                                    <p>
+                                                                        {switch name="$conf.d_type" }
+                                                                            {case value="1"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.value}" required="" type="text">
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="2"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+                                                                                        <div class="radio col-sm-4 ">
+                                                                                            <label>
+                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.value eq $key"}checked="checked"{/if} class="colored-success">
+                                                                                                <span class="text ">{$value} </span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <?php }?>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="3"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <?php  $temp=$conf['value'];$tp_arr=explode(',',$temp);?>
+                                                                                        <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+
+                                                                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                                                                <div class="checkbox">
+                                                                                                    <label>
+                                                                                                        <input id="{$conf.en_name}" name="{$conf.en_name}[]" type="checkbox" class="colored-success" value="{$key}" {in name="key" value="$tp_arr"} checked="checked" {/in}   class="colored-success">
+                                                                                                        <span class="text">{$value}</span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        <?php }?>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="4"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" required="" type="file" style="border-color: transparent;-webkit-box-shadow:0px 0px 0px transparent ">
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="5"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-btn">
+                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.value}</a>
+                                                                                                <a class="btn btn-success dropdown-toggle"  data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                                                <ul class="dropdown-menu dropdown-success">
+                                                                                                    <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+                                                                                                    <li>
+                                                                                                        <a href="javascript:$('#{$conf.en_name}').attr('value','{$value}');$('#drop_val').html('{$value}');void(0);">{$value}</a>
+                                                                                                    </li>
+                                                                                                   <?php }?>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                            <input type="text" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.value}"  class="form-control">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="6"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.value} name="{$conf.en_name}"">{$conf.value}</textarea>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {default /}默认情况
+                                                                        {/switch}
+                                                                    </p>
+                                                                {/if}
+                                                            {/volist}
+                                                        </div>
+                                                        <div id="attachment" class="tab-pane">
+                                                            {volist name="confs" id="conf"}
+                                                                {if condition="$conf.c_type eq 3"}
+                                                                    <p>
+                                                                        {switch name="$conf.d_type" }
+                                                                            {case value="1"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.value}" required="" type="text">
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="2"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+                                                                                        <div class="radio col-sm-4 ">
+                                                                                            <label>
+                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.value eq $key"}checked="checked"{/if} class="colored-success">
+                                                                                                <span class="text ">{$value} </span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <?php }?>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="3"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <?php  $temp=$conf['value'];$tp_arr=explode(',',$temp);?>
+                                                                                        <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+
+                                                                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                                                                <div class="checkbox">
+                                                                                                    <label>
+                                                                                                        <input id="{$conf.en_name}" name="{$conf.en_name}[]" type="checkbox" class="colored-success" value="{$key}" {in name="key" value="$tp_arr"} checked="checked" {/in}   class="colored-success">
+                                                                                                        <span class="text">{$value}</span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        <?php }?>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="4"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" required="" type="file" style="border-color: transparent;-webkit-box-shadow:0px 0px 0px transparent ">
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="5"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-btn">
+                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.value}</a>
+                                                                                                <a class="btn btn-success dropdown-toggle"  data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                                                <ul class="dropdown-menu dropdown-success">
+                                                                                                    <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+                                                                                                    <li>
+                                                                                                        <a href="javascript:$('#{$conf.en_name}').attr('value','{$value}');$('#drop_val').html('{$value}');void(0);">{$value}</a>
+                                                                                                    </li>
+                                                                                                   <?php }?>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                            <input type="text" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.value}"  class="form-control">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {case value="6"}
+                                                                                <div class="form-group">
+                                                                                    <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.value} name="{$conf.en_name}"">{$conf.value}</textarea>
+                                                                                    </div>
+                                                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                                                </div>
+                                                                            {/case}
+                                                                            {default /}默认情况
+                                                                        {/switch}
+                                                                    </p>
+                                                                {/if}
+                                                            {/volist}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                            <button type="submit" class="btn btn-sky">{$Think.lang.save_info}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="value" class="col-sm-2 control-label no-padding-right"></label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="username" placeholder="" name="value" value="" required="" type="hidden">
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!-- /Page Body -->
+                </div>
+                <!-- /Page Content -->
+            </div>	
+        </div>
+
+        <!--Basic Scripts-->
+        <script src="__JS__/jquery_002.js"></script>
+        <script src="__JS__/bootstrap.js"></script>
+        <script src="__JS__/jquery.js"></script>
+        <!--Beyond Scripts-->
+        <script src="__JS__/beyond.js"></script>
+
+
+
+    </body></html>
