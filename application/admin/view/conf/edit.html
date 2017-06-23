@@ -75,16 +75,16 @@
                                                 <div class="form-group">
                                                     <label for="value" class="col-sm-2 control-label no-padding-right">{$Think.lang.value}</label>
                                                     <div class="col-sm-6">
-                                                        <textarea class="form-control" id="value" placeholder="" value="" name="df_value">{$result.value}</textarea>
+                                                        <textarea class="form-control" id="value" placeholder="" value="" name="df_value" onblur="check_template($('#value'))" >{$result.df_value}</textarea>
                                                     </div>
-                                                    
+                                                    <p class="help-block col-sm-4 red" id="value_tip"></p>
                                                 </div>
-                                                <div class="form-group" id="values">
+                                                <div class="form-group" id="values_form">
                                                     <label for="values" class="col-sm-2 control-label no-padding-right">{$Think.lang.values}</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control"  placeholder="" name="values"  value="{$result.values}" type="text">
+                                                        <input class="form-control" id="values"  placeholder="" name="values"  value="{$result.values}" type="text">
                                                     </div>
-                                                    <p class="help-block col-sm-4 black">{$Think.lang.value_tip}</p>
+                                                    <p class="help-block col-sm-4 black">{$Think.lang.values_tip}</p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="c_type" class="col-sm-2 control-label no-padding-right">{$Think.lang.cate}</label>
@@ -124,7 +124,7 @@
                                             </div>
                                             <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-sky">{$Think.lang.save_info}</button>
+                                                <button type="submit"  onclick="javascript:check_template($('#value'));if(!template_name_is_right){$('#value').focus() ;return false;}" class="btn btn-sky">{$Think.lang.save_info}</button>
                                             </div>
                                         </div>
                                         </div>
@@ -150,18 +150,59 @@
         <script type="text/javascript">
            
             (function(){
-                var d_type={$result.d_type};
-                if(d_type!=2&&d_type!=3&&d_type!=5){$('#values').hide();}
+                var d_type="{$result.d_type}";
+                if(d_type!=2&&d_type!=3&&d_type!=5){$('#values_form').hide();}
+                if($('#en_name').val()=='template'){
+                    $('#values_form').show();
+                    get_template();
+                    check_template($('#value'));
+                }
+                
+                
             })();
-                    
+           
+            var template_name_is_right=true;     
             function check_value(obj){
-               
-               if(obj.value==2||obj.value==3){
-                   $('#values').show();
+               if(obj.value==2||obj.value==3||obj.value==5){
+                   $('#values_form').show();
                 }else{
-                      $('#values').hide();
-                } 
+                      $('#values_form').hide();
+                } ;
             }
+              function get_template(){
+                $('#values_form').show();
+                $.ajax({
+                   type: "POST",
+                   url: "{:url('getTemplate')}",
+                   data: "",
+                   success: function(msg){
+                     $("#values").val(msg);
+                     $("#values").attr('readonly','readonly');
+                  
+                   },
+                   error:function(){
+                       console.log('error');
+                   },
+                });
+            }
+          function check_template(obj){
+               if($('#en_name').val()=='template'){
+               $templ=obj.val();
+              
+               $templ_arr=$('#values').val().split(',');
+             index=$.inArray($templ,$templ_arr);
+              if(index==-1){
+                  $("#value_tip").attr('style','color:red');                  
+                  $("#value_tip").html("{$Think.lang.template_tip}");
+                  $("#value").focus();
+                  template_name_is_right=false;
+               }else{
+                    $("#value_tip").html(""); 
+                    template_name_is_right=true;
+               }
+           }
+            }
+           
         </script>
 
 

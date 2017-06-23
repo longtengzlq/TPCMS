@@ -85,7 +85,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.value}" required="" type="text">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.df_value}" required="" type="text">
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                                                 </div>
@@ -97,7 +97,7 @@
                                                                                         <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
                                                                                         <div class="radio col-sm-4 ">
                                                                                             <label>
-                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.value eq $key"}checked="checked"{/if} class="colored-success">
+                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.df_value eq $key"}checked="checked"{/if} class="colored-success">
                                                                                                 <span class="text ">{$value} </span>
                                                                                             </label>
                                                                                         </div>
@@ -110,7 +110,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <?php  $temp=$conf['value'];$tp_arr=explode(',',$temp);?>
+                                                                                        <?php  $temp=$conf['df_value'];$tp_arr=explode(',',$temp);?>
                                                                                         <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
 
                                                                                             <div class="col-lg-4 col-sm-4 col-xs-4">
@@ -138,10 +138,17 @@
                                                                             {case value="5"}
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
-                                                                                    <div class="col-sm-6">
+                                                                                    <div class="col-sm-6">                                                                                        
+                                                                                        <select id="{$conf.en_name}" name="{$conf.en_name}" >
+                                                                                            <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
+                                                                                            <option  {if condition="$conf.en_name eq 'template'"} value="{$value}"{else/}value="{$key}"{/if} {if condition="($key eq $conf.df_value) OR ($value eq $conf.df_value)"} selected="selected"{/if} >{$value}</option>
+                                                                                            <?php }?>
+                                                                                        </select>
+                                                                                        <!--
+                                                                                        //这是利用默认主题提供的下拉菜单实现功能
                                                                                         <div class="input-group">
                                                                                             <div class="input-group-btn">
-                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.value}</a>
+                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.df_value}</a>
                                                                                                 <a class="btn btn-success dropdown-toggle"  data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
                                                                                                 <ul class="dropdown-menu dropdown-success">
                                                                                                     <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
@@ -151,8 +158,9 @@
                                                                                                    <?php }?>
                                                                                                 </ul>
                                                                                             </div>
-                                                                                            <input type="text" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.value}"  class="form-control">
+                                                                                            <input type="text" disabled="disabled" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.df_value}"  class="form-control">
                                                                                         </div>
+                                                                                        -->
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                                                 </div>
@@ -161,7 +169,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.value} name="{$conf.en_name}"">{$conf.value}</textarea>
+                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.df_value} name="{$conf.en_name}"">{$conf.df_value}</textarea>
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                                                 </div>
@@ -182,7 +190,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.value}" required="" type="text">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.df_value}" required="" type="text">
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                                                 </div>
@@ -194,7 +202,7 @@
                                                                                         <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
                                                                                         <div class="radio col-sm-4 ">
                                                                                             <label>
-                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.value eq $key"}checked="checked"{/if} class="colored-success">
+                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.df_value eq $key"}checked="checked"{/if} class="colored-success">
                                                                                                 <span class="text ">{$value} </span>
                                                                                             </label>
                                                                                         </div>
@@ -207,7 +215,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <?php  $temp=$conf['value'];$tp_arr=explode(',',$temp);?>
+                                                                                        <?php  $temp=$conf['df_value'];$tp_arr=explode(',',$temp);?>
                                                                                         <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
 
                                                                                             <div class="col-lg-4 col-sm-4 col-xs-4">
@@ -238,17 +246,17 @@
                                                                                     <div class="col-sm-6">
                                                                                         <div class="input-group">
                                                                                             <div class="input-group-btn">
-                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.value}</a>
+                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.df_value}</a>
                                                                                                 <a class="btn btn-success dropdown-toggle"  data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
                                                                                                 <ul class="dropdown-menu dropdown-success">
                                                                                                     <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
                                                                                                     <li>
-                                                                                                        <a href="javascript:$('#{$conf.en_name}').attr('value','{$value}');$('#drop_val').html('{$value}');void(0);">{$value}</a>
+                                                                                                        <a  href="javascript:$('#{$conf.en_name}').attr('value','{$value}');$('#drop_val').html('{$value}');void(0);">{$value}</a>
                                                                                                     </li>
                                                                                                    <?php }?>
                                                                                                 </ul>
                                                                                             </div>
-                                                                                            <input type="text" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.value}"  class="form-control">
+                                                                                            <input type="text" disabled="disabled" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.df_value}"  class="form-control">
                                                                                         </div>
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
@@ -258,7 +266,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.value} name="{$conf.en_name}"">{$conf.value}</textarea>
+                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.df_value} name="{$conf.en_name}"">{$conf.df_value}</textarea>
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                                                 </div>
@@ -278,7 +286,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.value}" required="" type="text">
+                                                                                        <input class="form-control" id="{$conf.en_name}" placeholder="" name="{$conf.en_name}" value="{$conf.df_value}" required="" type="text">
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                                                 </div>
@@ -290,7 +298,7 @@
                                                                                         <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
                                                                                         <div class="radio col-sm-4 ">
                                                                                             <label>
-                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.value eq $key"}checked="checked"{/if} class="colored-success">
+                                                                                                <input id="{$conf.en_name}" name="{$conf.en_name}" type="radio" value="{$key}" {if condition="$conf.df_value eq $key"}checked="checked"{/if} class="colored-success">
                                                                                                 <span class="text ">{$value} </span>
                                                                                             </label>
                                                                                         </div>
@@ -303,7 +311,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <?php  $temp=$conf['value'];$tp_arr=explode(',',$temp);?>
+                                                                                        <?php  $temp=$conf['df_value'];$tp_arr=explode(',',$temp);?>
                                                                                         <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
 
                                                                                             <div class="col-lg-4 col-sm-4 col-xs-4">
@@ -334,7 +342,7 @@
                                                                                     <div class="col-sm-6">
                                                                                         <div class="input-group">
                                                                                             <div class="input-group-btn">
-                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.value}</a>
+                                                                                                <a class="btn btn-success" id='drop_val' href="javascript:void(0);">{$conf.df_value}</a>
                                                                                                 <a class="btn btn-success dropdown-toggle"  data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
                                                                                                 <ul class="dropdown-menu dropdown-success">
                                                                                                     <?php  $str=$conf['values'];$arr=explode(',',$str);foreach($arr as $key=>$value){?>
@@ -344,7 +352,7 @@
                                                                                                    <?php }?>
                                                                                                 </ul>
                                                                                             </div>
-                                                                                            <input type="text" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.value}"  class="form-control">
+                                                                                            <input type="text" name="{$conf.en_name}"  id="{$conf.en_name}" value="{$conf.df_value}"  class="form-control">
                                                                                         </div>
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
@@ -354,7 +362,7 @@
                                                                                 <div class="form-group">
                                                                                     <label for="{$conf.en_name}" class="col-sm-2 control-label no-padding-right">{$conf.ch_name}</label>
                                                                                     <div class="col-sm-6">
-                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.value} name="{$conf.en_name}"">{$conf.value}</textarea>
+                                                                                        <textarea class="form-control" rows="3" id="{$conf.en_name}"  placeholder="{$conf.df_value} name="{$conf.en_name}"">{$conf.df_value}</textarea>
                                                                                     </div>
                                                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                                                 </div>
@@ -377,13 +385,7 @@
 
 
                                         </div>
-                                        <div class="form-group">
-                                            <label for="value" class="col-sm-2 control-label no-padding-right"></label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control" id="username" placeholder="" name="value" value="" required="" type="hidden">
-                                            </div>
-
-                                        </div>
+                                       
                                     </form>
                                 </div>
 

@@ -43,7 +43,7 @@ return [
     'values'=>'所有选项',
     'cate'=>'所属栏目',
     'data_type'=>'数据类型',
-    'value_tip'=>'选项之间用英文","分割',
+    'values_tip'=>'选项之间用英文","分割',
     'basic_info'=>'基本信息',
     'SEO_info'=>'SEO设置',
     'attchment_info'=>'附件设置',
@@ -57,5 +57,6 @@ return [
     'conf_status'=>'是否启用',
     'setting_list'=>'设置列表',
     'system_set'=>'系统设置',
+    'template_tip'=>'请输入正确的模板目录！',
     
 ];

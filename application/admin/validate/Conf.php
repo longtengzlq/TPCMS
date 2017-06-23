@@ -20,7 +20,7 @@ class Conf extends Validate {
         'en_name'=> 'require|max:60|unique:conf',
         'c_type'=> 'require|number|between:1,3',
         'd_type'=> 'require|number|between:1,6',
-        'value'=> 'require',
+        'df_value'=> 'require',
         'values'=> 'require',
         'id'=> 'require',
         
@@ -38,12 +38,12 @@ class Conf extends Validate {
         'd_type.require' => '数据类型只必填',
         'd_type.between' => '数据类型只能在1-6之间',
         'id.required' => 'id不得为空',
-        'value.require' => 'id不得为空',
+        'df_value.require' => '值不得为空',
         
     ];
     protected $scene = [
         'add' => ['ch_name', 'en_name','c_type','d_type'],
-        'edit' => ['ch_name', 'en_name','c_type','d_type','id','value'],
+        'edit' => ['ch_name', 'en_name','c_type','d_type','id','df_value'],
     ];
 
 }

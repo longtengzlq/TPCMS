@@ -34,8 +34,9 @@ class Conf extends Base{
             if($data['values']!=''){
                 $data['values']= str_ireplace('，', ',', $data['values']);
             }
-            $data['value']=$data['df_value'];
-            $data= del_arr_ele_by_key($data, 'df_value');
+          
+            //$data['value']=$data['df_value'];
+            //$data= del_arr_ele_by_key($data, 'df_value');
             $validate = new ConfV();
             if ($validate->scene('add')->check($data)) {
                 //验证通过则插入
@@ -63,11 +64,10 @@ class Conf extends Base{
             if($data['values']!=''){
                 $data['values']= str_ireplace('，', ',', $data['values']);
             }
-            $data= del_arr_ele_by_key($data, 'df_value');
-            if(db('conf')->update($data)!==false){
-                $this->success('更新成功', 'conf/lst');
+            if((db('conf')->where('id',input('id'))->update($data))===false){
+                $this->error('更新失败', 'conf/lst');
             }else{
-                 $this->error('更新失败', 'conf/lst');
+                 $this->success('更新成功', 'conf/lst');
             }
         }
         return $this->fetch();
@@ -85,16 +85,15 @@ class Conf extends Base{
                 $attchment_type= $_POST['attchment_type'];
                 $data['attchment_type']= implode(',', $attchment_type);
             }
+            
             foreach($data as $key=>$value){
-                if(db('conf')->where('en_name',$key)->update(['value'=>$value])!==false){
-                    echo $key;
-                    echo '-yes'."<br/>";
+                if(db('conf')->where('en_name',$key)->update(['df_value'=>$value])!==false){
+                   // 
                 }else{
-                    echo $key."<br/>";
-                    echo 'no';
+                    $this->error('更新失败', 'conf/settinglst');
                 }
             }
-           
+           $this->success('更新成功', 'conf/settinglst');
             die;
         }
         
@@ -189,4 +188,19 @@ class Conf extends Base{
             echo 'error';
         }
     }
+    public function  getTemplate(){
+        $template_path= \think\Config::get('template_path');
+       
+        $temp= scandir($template_path);
+        $templates=array();        
+        foreach ($temp as $key => $value) {
+            if(is_dir($template_path.$value)&&$value!='.'&&$value!='..'){
+                array_push($templates, $value);
+            }
+        }
+        echo implode(',', $templates);        
+    }
+    
+    
+    
 }

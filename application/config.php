@@ -234,4 +234,5 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    'template_path'=>ROOT_PATH.'public/template/'
 ];

@@ -68,23 +68,23 @@
                                                 <div class="form-group">
                                                     <label for="en_name" class="col-sm-2 control-label no-padding-right">{$Think.lang.en_name}</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control" id="en_name" placeholder="" name="en_name" required="" type="text">
+                                                        <input class="form-control" id="en_name" placeholder="" name="en_name" required="" type="text"  onblur="get_template(this)">
                                                     </div>
                                                     <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="value" class="col-sm-2 control-label no-padding-right">{$Think.lang.value}</label>
+                                                    <label for="value" class="col-sm-2 control-label no-padding-right" >{$Think.lang.value}</label>
                                                     <div class="col-sm-6">
-                                                        <textarea class="form-control" id="value" placeholder="" name="df_value"></textarea>
+                                                        <textarea class="form-control" id="value" placeholder=""onblur="check_template(this)" name="df_value"></textarea>
                                                     </div>
-                                                    
+                                                    <p class="help-block col-sm-4 black" id="value_tip"></p>
                                                 </div>
-                                                <div class="form-group" id="values">
+                                                <div class="form-group" id="values_form">
                                                     <label for="values" class="col-sm-2 control-label no-padding-right">{$Think.lang.values}</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control"  placeholder="" name="values"  type="text">
+                                                        <input class="form-control"  placeholder="" id="values"  name="values"  type="text">
                                                     </div>
-                                                    <p class="help-block col-sm-4 black">{$Think.lang.value_tip}</p>
+                                                    <p class="help-block col-sm-4 black">{$Think.lang.values_tip}</p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="c_type" class="col-sm-2 control-label no-padding-right">{$Think.lang.cate}</label>
@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-sky">{$Think.lang.save_info}</button>
+                                                <button type="submit" onclick="javascript:if(!template_name_is_right){return false;}" class="btn btn-sky">{$Think.lang.save_info}</button>
                                             </div>
                                         </div>
                                         </div>
@@ -150,15 +150,53 @@
         <!--Beyond Scripts-->
         <script src="__JS__/beyond.js"></script>
         <script type="text/javascript">
-            ($('#values').hide())();
+                   
+            var template_name_is_right=true;
+            ($('#values_form').hide())();
+            function get_template(obj){
+                if(obj.value=='template'){
+                    $('#values_form').show();
+                    $.ajax({
+                       type: "POST",
+                       url: "{:url('getTemplate')}",
+                       data: "",
+                       success: function(msg){
+                         $("#values").val(msg);
+                         $("#values").attr('readonly','readonly');
+                         $("#value").val('default');
+                       },
+                       error:function(){
+                           console.log('error');
+                       },
+                    });
+                }
+                
+            }
+        function check_template(obj){
+            if(obj.value=='template'){
+                $templ=obj.value;
+                $templ_arr=$('#values').val().split(',');
+                index=$.inArray($templ,$templ_arr);
+                if(index==-1){
+                    $("#value_tip").attr('style','color:red');                  
+                    $("#value_tip").html("{$Think.lang.template_tip}");
+                    $("#value").focus();
+                    template_name_is_right=false;
+                }else{
+                    $("#value_tip").html(""); 
+                    template_name_is_right=true;
+                   }
+               }
+            }
             function check_value(obj){
                
                if(obj.value==2||obj.value==3||obj.value==5){
-                   $('#values').show();
+                   $('#values_form').show();
                 }else{
-                      $('#values').hide();
+                     $('#values_form').hide();
                 } 
             }
+            
         </script>
 
 
