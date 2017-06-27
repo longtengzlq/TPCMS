@@ -94,7 +94,6 @@ class Conf extends Base{
                 }
             }
            $this->success('更新成功', 'conf/settinglst');
-            die;
         }
         
         
