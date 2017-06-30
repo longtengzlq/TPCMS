@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+        <title>ThinkPHP5.0</title>
+
+        <meta name="description" content="Dashboard">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--Basic Styles-->
+        <link href="__CSS__/bootstrap.css" rel="stylesheet">
+        <link href="__CSS__/font-awesome.css" rel="stylesheet">
+        <link href="__CSS__/weather-icons.css" rel="stylesheet">
+
+        <!--Beyond styles-->
+        <link id="beyond-link" href="__CSS__/beyond.css" rel="stylesheet" type="text/css">
+        <link href="__CSS__/demo.css" rel="stylesheet">
+        <link href="__CSS__/typicons.css" rel="stylesheet">
+        <link href="__CSS__/animate.css" rel="stylesheet">
+        <link href="__CSS__/admin.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <!-- 头部 -->
+        {include file="common/header"}
+
+        <!-- /头部 -->
+
+        <div class="main-container container-fluid">
+            <div class="page-container">
+                <!-- Page Sidebar -->
+                {include file="common/left"}
+                <!-- /Page Sidebar -->
+                <!-- Page Content -->
+                <div class="page-content">
+                    <!-- Page Breadcrumb -->
+                    <div class="page-breadcrumbs">
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">{$Think.lang.system}</a>
+                            </li>
+                            
+                            <li class="active">{$Think.lang.configs_add}</li>
+                        </ul>
+                    </div>
+                    <!-- /Page Breadcrumb -->
+
+                    <!-- Page Body -->
+                    <div class="page-body">
+
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="widget">
+                                    <div class="widget-header bordered-bottom bordered-blue">
+                                        <span class="widget-caption">{$Think.lang.configs_add}</span>
+                                    </div>
+                                    <form class="form-horizontal" role="form" action="" method="post">
+                                        <div class="widget-body">
+                                            <div id="horizontal-form">
+                                                <input class="form-control" id="" placeholder="" name="id" value="" type="hidden">
+                                                   
+                                                <div class="form-group">
+                                                    <label for="ch_name" class="col-sm-2 control-label no-padding-right">{$Think.lang.ch_name}</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control" id="ch_name" placeholder="" value="{$result.ch_name}" name="ch_name" value="" type="text">
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="en_name" class="col-sm-2 control-label no-padding-right">{$Think.lang.en_name}</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control" id="en_name" placeholder="" name="en_name" value="{$result.en_name}" required="" type="text"  onblur="get_template(this)">
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lname" class="col-sm-2 control-label no-padding-right">{$Think.lang.lname}</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control" id="lname" placeholder="" name="lname" value="{$result.lname}" required="" type="text"  onblur="get_template(this)">
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="data_name" class="col-sm-2 control-label no-padding-right">{$Think.lang.data_name}</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control" id="data_name" placeholder="" value="{$result.data_name}" name="data_name" required="" type="text" >
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lang_file" class="col-sm-2 control-label no-padding-right">{$Think.lang.lang_file}</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control" id="lang_file" placeholder="" value="{$result.lang_file}" name="lang_file" required="" type="text"  >
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status" class="col-sm-2 control-label no-padding-right" >{$Think.lang.conf_status}</label>
+                                                    <div class="col-sm-6">
+                                                        <label>
+                                                            <input class="checkbox-slider colored-success "  {if condition="$result.status eq 1"} checked="checked" {/if} id='status'  name='status' type="checkbox">
+                                                            <span class="text" style="margin-top:5px"></span>
+                                                        </label>
+                                                    </div>                             
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sort" class="col-sm-2 control-label no-padding-right">{$Think.lang.sort}</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control" id="sort" placeholder="" value="{$result.sort}" name="sort" required="" type="text"  >
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* {$Think.lang.required}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit"  class="btn btn-sky">{$Think.lang.save_info}</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /Page Body -->
+                </div>
+                <!-- /Page Content -->
+            </div>	
+        </div>
+
+        <!--Basic Scripts-->
+        <script src="__JS__/jquery_002.js"></script>
+        <script src="__JS__/bootstrap.js"></script>
+        <script src="__JS__/jquery.js"></script>
+        <!--Beyond Scripts-->
+        <script src="__JS__/beyond.js"></script>
+        <script type="text/javascript">
+          
+            
+        </script>
+
+
+
+    </body></html>

@@ -16,7 +16,7 @@ use think\Lang;
 class LoadLang {
 
     function run() {
-
+/*
         switch (input('lang')) {
             case 'zh-cn':
                 Lang::load(APP_PATH . 'common\lang\zh-cn.php'); 
@@ -44,5 +44,7 @@ class LoadLang {
                 }
                 break;
         }
+ * 
+ */
     }
 }

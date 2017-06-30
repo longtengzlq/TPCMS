@@ -38,7 +38,7 @@
                                         <li>
                         <a href="{:url('index/index')}">{$Think.lang.system}</a>
                     </li>
-                                        <li class="active">{$Think.lang.configs_lst}</li>
+                                        <li class="active">语言列表</li>
                                         </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -46,7 +46,7 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="{$Think.lang.configs_lst}" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('conf/add')}'"> <i class="fa fa-plus"></i> {$Think.lang.configs_add}
+<button type="button" tooltip="{$Think.lang.configs_lst}" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('language/add')}'"> <i class="fa fa-plus"></i> {$Think.lang.language_add}
 </button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -68,9 +68,9 @@
                                 <th class="text-center" style="vertical-align: middle">{$Think.lang.id}</th>
                                 <th class="text-center" style="vertical-align: middle"><a href="" style='color:inherit'>{$Think.lang.sort}</a></th>                                
                                 <th class="text-center" style="vertical-align: middle">{$Think.lang.ch_name}</th>
-                                <th class="text-center" style="vertical-align: middle">{$Think.lang.en_name}</th>
-                                <th class="text-center" style="vertical-align: middle">{$Think.lang.cate}</th>
-                                <th class="text-center" style="vertical-align: middle">{$Think.lang.data_type}</th>                               
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.lname}</th>
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.lang_file}</th>
+                                <th class="text-center" style="vertical-align: middle">{$Think.lang.data_name}</th>                               
                                 <th class="text-center" style="vertical-align: middle">{$Think.lang.status}</th>                               
                                 <th class="text-center" style="vertical-align: middle">{$Think.lang.operation}</th>
                             </tr>
@@ -91,9 +91,9 @@
                                   </td>
                                 
                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.ch_name}</td>
-                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.en_name} </td>
-                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$c_type[$vo.c_type]} </td>
-                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$data_type[$vo.d_type]}</td>
+                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.lname} </td>
+                                <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.lang_file} </td>
+                                 <td align="center"  style='vertical-align: middle;font-size: 13px'>{$vo.data_name}</td>
                                  <td align="center"  style='vertical-align: middle;font-size: 13px'>
                                     <label>
                                         <input class="checkbox-slider colored-success " style="left: inherit"  onclick="set_status({$vo.id},this)"  id='status_{$vo.id}' data-tog='sdfaf'  name='status' {if condition="$vo.status == 1"}checked="checked"{/if}type="checkbox">
@@ -103,11 +103,11 @@
                               
                                                          
                                 <td align="center" class="buttons-preview"  style='vertical-align: middle;font-size: 13px'>
-                                    <a href="{:url('conf/edit',array('id'=>$vo['id']))}" class="btn btn-azure btn-m " style="margin-bottom: -1px;">
+                                    <a href="{:url('Language/edit',array('id'=>$vo['id']))}" class="btn btn-azure btn-m " style="margin-bottom: -1px;">
                                         <i class="fa fa-edit"></i> {$Think.lang.edit}
                                     </a>
                             
-                                    <a href="{:url('Conf/del',array('id'=>$vo['id']))}" onClick="warning('{$Think.lang.delete_confirm}') " class="btn btn-darkorange  btn-m" style="margin-bottom: -1px;">
+                                    <a href="{:url('Language/del',array('id'=>$vo['id']))}" onClick="warning('{$Think.lang.delete_confirm}') " class="btn btn-darkorange  btn-m" style="margin-bottom: -1px;">
                                         <i class="fa fa-trash-o"></i> {$Think.lang.delete}
                                     </a>
                                 </td>
@@ -151,7 +151,6 @@
     
     <!--Beyond Scripts-->
     <script src="__JS__/beyond.js"></script>
-
     <script>
         
         /* 

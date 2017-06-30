@@ -17,6 +17,8 @@ use think\Request;
  */
 class Index extends Controller{
     public function  index(){
+        echo 'controller'.lang_id.'</br>';
+       
         return $this->fetch();
     }
 }
